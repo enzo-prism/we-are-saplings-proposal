@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: #f5f0e8;
+  --color-card: #ffffff;
+  --color-ink: #0c0c0b;
+  --color-muted: #5f594f;
+  --color-line: #c1b9ac;
+  --color-moss: #938d40;
+  --font-sans: var(--font-inter);
+}
+
+html {
+  overflow-x: clip;
+}
+
+body {
+  background: #f5f0e8;
+  color: #0c0c0b;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: clip;
+}
