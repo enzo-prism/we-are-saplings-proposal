@@ -1,0 +1,45 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const title = "Proposal for Clare Frattarola · We Are Saplings";
+const description =
+  "By day 30 the site takes people from a post or an in-person event all the way to a Shopify checkout, and we can see what actually worked. Then we stop and you choose what happens next.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  authors: [{ name: "Enzo Sison · Prism" }],
+  openGraph: {
+    title,
+    description,
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+      <body className={`${inter.className} min-h-full bg-paper text-ink`}>
+        {children}
+      </body>
+    </html>
+  );
+}
