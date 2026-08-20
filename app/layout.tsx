@@ -13,7 +13,14 @@ const title = "Proposal for Clare Frattarola · We Are Saplings";
 const description =
   "By day 30 the site takes people from a post or an in-person event all the way to a Shopify checkout, and we can see what actually worked. Then we stop and you choose what happens next.";
 
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title,
   description,
   authors: [{ name: "Enzo Sison · Prism" }],
