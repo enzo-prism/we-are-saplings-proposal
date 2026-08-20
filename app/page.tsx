@@ -175,9 +175,9 @@ export default function Home() {
             {day30.map(({ title, body, Icon }) => (
               <li
                 key={title}
-                className="flex gap-3 rounded-[14px] border border-line bg-card p-4"
+                className="flex gap-3 rounded-2xl border border-line bg-card p-4"
               >
-                <span className="flex size-10 shrink-0 items-center justify-center">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-moss/35 bg-paper">
                   <Icon
                     aria-hidden
                     className="size-5 text-moss"
@@ -212,10 +212,14 @@ export default function Home() {
         <section className="flex flex-col gap-4 px-6 pb-2 pt-10 md:px-[84px] xl:px-[300px]">
           <Eyebrow>timeline</Eyebrow>
           <Heading>four weeks, then we stop.</Heading>
-          <ol className="flex flex-col gap-4">
+          <ol className="relative flex flex-col gap-4">
+            <span
+              aria-hidden
+              className="absolute bottom-4 left-[17px] top-4 w-px bg-line"
+            />
             {weeks.map((step) => (
-              <li key={step.n} className="flex gap-3.5">
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-ink text-[11px] font-medium text-paper">
+              <li key={step.n} className="relative flex gap-3.5">
+                <span className="relative z-10 flex size-9 shrink-0 items-center justify-center rounded-full bg-ink text-[11px] font-medium text-paper">
                   {step.n}
                 </span>
                 <div className="min-w-0 flex-1">
