@@ -1,51 +1,65 @@
 import {
+  Activity,
   AudioLines,
   CalendarCheck,
-  ChartLine,
-  FileText,
-  Mail,
-  Share2,
+  Search,
   ShoppingBag,
+  Smartphone,
   type LucideIcon,
 } from "lucide-react";
 
 const MAILTO =
   "mailto:enzo@design-prism.com?subject=We%20Are%20Saplings%2030-day%20sprint";
 
-const day30: { title: string; body: string; Icon: LucideIcon }[] = [
+function SiteLink() {
+  return (
+    <a
+      className="-my-3 inline-flex min-h-11 items-center py-3 underline decoration-line underline-offset-2"
+      href="https://wearesaplings.com"
+    >
+      wearesaplings.com
+    </a>
+  );
+}
+
+const whatYouGet: {
+  title: string;
+  body: React.ReactNode;
+  Icon: LucideIcon;
+}[] = [
   {
-    title: "Shopify on wearesaplings.com",
-    body: "Checkout stays on-site. You update stock.",
+    title: "A parent checks out on your site.",
+    body: (
+      <>
+        They hit Get Yours Today and stay on <SiteLink />. Tax and shipping are
+        handled. You update stock. We connect it.
+      </>
+    ),
     Icon: ShoppingBag,
   },
   {
-    title: "New copy live",
-    body: "Home, shop, about, audio stories, contact. Partner vs testimonials you lock.",
-    Icon: FileText,
+    title: "The Sept 26 table can take money.",
+    body: "From your phone, at the event, without a messy workaround.",
+    Icon: Smartphone,
   },
   {
-    title: "Contact form",
-    body: "Name, email, short note.",
-    Icon: Mail,
-  },
-  {
-    title: "Spotify on Audio Stories",
-    body: "Your upload, on the page.",
+    title: "Stories live on the site.",
+    body: "Audio Stories goes to your Spotify podcast. A parent can play from the deck without the Linktree detour.",
     Icon: AudioLines,
   },
   {
-    title: "Tracking",
-    body: "GA + Search Console + Shopify purchase tracking.",
-    Icon: ChartLine,
+    title: "You can see which posts work.",
+    body: "When you post in October, we can see it: this post or this event sent someone, they stayed, they bought.",
+    Icon: Activity,
   },
   {
-    title: "Push kit",
-    body: "Shop links, UTMs, one-pager.",
-    Icon: Share2,
+    title: "Google looks at a live site again.",
+    body: "A selling site, not a quiet one. The way it used to when people googled you before a pitch.",
+    Icon: Search,
   },
   {
-    title: "Bi-weekly Zooms",
-    body: "Two in 30 days.",
+    title: "Two working Zooms in the 30 days.",
+    body: "Short. We look at what shipped.",
     Icon: CalendarCheck,
   },
 ];
@@ -54,22 +68,22 @@ const weeks = [
   {
     n: "01",
     title: "days 1–7",
-    body: "Access + GA/GSC + form + copy starts.",
+    body: "You add Enzo as Shopify admin. We reconnect Google so the site is findable again. Contact form live. Your copy starts going in.",
   },
   {
     n: "02",
     title: "days 8–14",
-    body: "Shopify backend + on-site checkout + shop CTAs.",
+    body: "Shop and checkout stay on your site. Get Yours Today actually sells.",
   },
   {
     n: "03",
     title: "days 15–21",
-    body: "Spotify + photos if ready + Partner / testimonials locked.",
+    body: "Spotify on Audio Stories. New photos if the shoot is ready. Partner vs testimonials locked.",
   },
   {
     n: "04",
     title: "days 22–30",
-    body: "Tracking verified, push kit, confirm Shopify POS for the Sept 26 table.",
+    body: "We confirm you can take money at the Sept 26 table from your phone. You get ready shop links for Instagram, TikTok, and the table, plus a one-page note on where to send people. Site is ready to push.",
   },
 ];
 
@@ -95,9 +109,18 @@ const startSteps = [
   "Day 30, you choose",
 ];
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
+function Eyebrow({
+  children,
+  tracking = "0.2em",
+}: {
+  children: React.ReactNode;
+  tracking?: string;
+}) {
   return (
-    <p className="w-full text-[11px] font-medium tracking-[0.2em] text-moss">
+    <p
+      className="w-full text-[11px] font-medium text-moss"
+      style={{ letterSpacing: tracking }}
+    >
       {children}
     </p>
   );
@@ -115,7 +138,7 @@ export default function Home() {
   return (
     <>
       <main className="mx-auto w-full max-w-[390px] pb-[104px] md:max-w-[768px] xl:max-w-[1280px]">
-        <header className="flex h-[53px] items-end justify-between px-6 pb-2 pt-7 md:px-[84px] xl:px-[300px]">
+        <header className="flex h-[53px] items-center justify-between px-6 pb-2 pt-7 md:px-[84px] xl:px-[300px]">
           <p className="text-[14px] font-semibold tracking-[0.4px] text-ink">
             prism
           </p>
@@ -125,82 +148,74 @@ export default function Home() {
         </header>
 
         <section className="flex flex-col gap-4 px-6 pb-2 pt-9 md:px-[84px] xl:px-[300px]">
-          <Eyebrow>30-day sprint</Eyebrow>
+          <Eyebrow tracking="2.4px">30 days</Eyebrow>
           <h1 className="text-[32px] font-semibold leading-[38px] text-ink">
-            one month to get we are saplings ready to sell.
+            your site can sell. then we stop.
           </h1>
           <p className="text-[16px] font-normal leading-6 text-muted">
-            By day 30 the site takes people from a post or an in-person event
-            all the way to a Shopify checkout, and we can see what actually
-            worked. Then we stop and you choose what happens next.
+            The card deck is real. 500 arrived. The stories are recorded. You
+            are done creating and ready to push.
+          </p>
+          <p className="text-[16px] font-normal leading-6 text-muted">
+            In 30 days, someone can pick up a deck at your Sept 26 table or from
+            a post, pay on wearesaplings.com, and you can see what sent them.
+            $999. Then you choose what happens next.
           </p>
         </section>
 
         <section className="px-6 pb-2 pt-7 md:px-[84px] xl:px-[300px]">
           <div className="flex flex-col gap-1.5 rounded-2xl border border-line bg-card p-5">
-            <p className="text-[11px] font-medium tracking-[0.16em] text-moss">
+            <p className="text-[11px] font-medium tracking-[1.8px] text-moss">
               the whole proposal
             </p>
             <p className="text-[40px] font-semibold leading-[44px] text-ink">
-              $1,000
+              $999
             </p>
             <p className="text-[15px] font-normal leading-[22px] text-muted">
-              for the 30-day sprint.
+              for the 30 days.
             </p>
           </div>
         </section>
 
         <section className="flex flex-col gap-3 px-6 pb-2 pt-10 md:px-[84px] xl:px-[300px]">
           <Eyebrow>where you are</Eyebrow>
-          <Heading>the groundwork, not a new brand.</Heading>
+          <Heading>the deck is ready. the site is not.</Heading>
           <p className="text-[16px] leading-6 text-muted">
-            Card deck is real. Audio stories recorded. Sept 26 in-person event.
-            Need sales in 10 states by December for the trademark.
+            You spent a year testing with real kids. Now you need the product to
+            sell without you sitting in every room.
           </p>
           <p className="text-[16px] leading-6 text-muted">
-            Site already looks like you. You rewrote copy and flow. It cannot
-            yet take an order, capture a lead, or show which posts or events
-            turn into buyers.
+            What is missing: Get Yours Today cannot take an order. A scan still
+            goes to Linktree. When people google you before a pitch, you no
+            longer look as legit as you used to.
           </p>
           <p className="text-[16px] leading-6 text-ink">
-            This sprint is that groundwork. Not a new brand. Not a Squarespace
-            rebuild.
+            You already rewrote the copy and the page flow. You have a Shopify
+            account. You do not want a new site. You want this one finished so
+            you can stay on the cards, the book, and the stories.
           </p>
         </section>
 
         <section className="flex flex-col gap-3 px-6 pb-2 pt-10 md:px-[84px] xl:px-[300px]">
-          <Eyebrow>day 30</Eyebrow>
-          <Heading>what is live when we stop.</Heading>
-          <ul className="grid grid-cols-1 gap-3 md:grid-cols-2">
-            {day30.map(({ title, body, Icon }) => (
+          <Eyebrow>what $999 gets you</Eyebrow>
+          <ul className="grid grid-cols-1 items-start gap-3 md:grid-cols-2">
+            {whatYouGet.map(({ title, body, Icon }) => (
               <li
                 key={title}
-                className="flex gap-3 rounded-2xl border border-line bg-card p-4"
+                className="flex gap-3 rounded-[14px] border border-line bg-card p-4"
               >
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-moss/35 bg-paper">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-line bg-paper">
                   <Icon
                     aria-hidden
                     className="size-5 text-moss"
                     strokeWidth={1.5}
                   />
                 </span>
-                <div className="min-w-0 flex-1">
+                <div className="flex min-w-0 flex-1 flex-col gap-1">
                   <p className="text-[15px] font-semibold leading-5 text-ink">
-                    {title === "Shopify on wearesaplings.com" ? (
-                      <>
-                        Shopify on{" "}
-                        <a
-                          className="-my-3 inline-flex min-h-11 items-center py-3 underline decoration-line underline-offset-2"
-                          href="https://wearesaplings.com"
-                        >
-                          wearesaplings.com
-                        </a>
-                      </>
-                    ) : (
-                      title
-                    )}
+                    {title}
                   </p>
-                  <p className="mt-1 text-[13px] leading-[19px] text-muted">
+                  <p className="text-[13px] leading-[19px] text-muted">
                     {body}
                   </p>
                 </div>
@@ -210,19 +225,19 @@ export default function Home() {
         </section>
 
         <section className="flex flex-col gap-4 px-6 pb-2 pt-10 md:px-[84px] xl:px-[300px]">
-          <Eyebrow>timeline</Eyebrow>
-          <Heading>four weeks, then we stop.</Heading>
+          <Eyebrow>the 30 days</Eyebrow>
+          <Heading>then we stop.</Heading>
           <ol className="flex flex-col gap-4">
             {weeks.map((step) => (
               <li key={step.n} className="flex gap-3.5">
                 <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-ink text-[11px] font-medium text-paper">
                   {step.n}
                 </span>
-                <div className="min-w-0 flex-1">
+                <div className="flex min-w-0 flex-1 flex-col gap-1">
                   <p className="text-[15px] font-semibold leading-5 text-ink">
                     {step.title}
                   </p>
-                  <p className="mt-1 text-[14px] leading-[21px] text-muted">
+                  <p className="text-[14px] leading-[21px] text-muted">
                     {step.body}
                   </p>
                 </div>
@@ -270,27 +285,27 @@ export default function Home() {
           <Eyebrow>after day 30</Eyebrow>
           <Heading>you pick one. none start unless you say so.</Heading>
           <div className="flex flex-col gap-3">
-            <article className="rounded-2xl border border-line bg-card p-5">
+            <article className="flex flex-col gap-2 rounded-2xl border border-line bg-card p-5">
               <h3 className="text-[18px] font-semibold leading-6 text-ink">
                 Growth
               </h3>
-              <p className="mt-2 text-[14px] leading-[21px] text-muted">
+              <p className="text-[14px] leading-[21px] text-muted">
                 Double down. Separate scope and price.
               </p>
             </article>
-            <article className="rounded-2xl border border-line bg-card p-5">
+            <article className="flex flex-col gap-2 rounded-2xl border border-line bg-card p-5">
               <h3 className="text-[18px] font-semibold leading-6 text-ink">
                 Keep the lights on
               </h3>
-              <p className="mt-2 text-[14px] leading-[21px] text-muted">
+              <p className="text-[14px] leading-[21px] text-muted">
                 $20/mo. Hosting plus the minimum to keep the site up.
               </p>
             </article>
-            <article className="rounded-2xl border border-line bg-card p-5">
+            <article className="flex flex-col gap-2 rounded-2xl border border-line bg-card p-5">
               <h3 className="text-[18px] font-semibold leading-6 text-ink">
                 Full handoff
               </h3>
-              <p className="mt-2 text-[14px] leading-[21px] text-muted">
+              <p className="text-[14px] leading-[21px] text-muted">
                 Enzo is out. You keep it, or another partner can take it
                 cleanly.
               </p>
@@ -338,7 +353,7 @@ export default function Home() {
           aria-hidden
           className="pointer-events-none absolute inset-x-0 bottom-full h-7 bg-gradient-to-b from-paper/0 to-paper"
         />
-        <div className="mx-auto w-full max-w-[390px] px-6 py-3 md:max-w-[768px] md:px-[84px] xl:max-w-[1280px] xl:px-[300px]">
+        <div className="mx-auto w-full max-w-[390px] px-6 pb-5 pt-3 md:max-w-[768px] md:px-[84px] xl:max-w-[1280px] xl:px-[300px]">
           <a
             className="flex h-[52px] min-h-11 w-full items-center justify-center rounded-[14px] bg-ink px-5 text-[16px] font-medium leading-5 text-paper"
             href={MAILTO}

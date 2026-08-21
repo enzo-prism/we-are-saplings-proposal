@@ -11,7 +11,7 @@ const inter = Inter({
 
 const title = "Proposal for Clare Frattarola · We Are Saplings";
 const description =
-  "By day 30 the site takes people from a post or an in-person event all the way to a Shopify checkout, and we can see what actually worked. Then we stop and you choose what happens next.";
+  "The card deck is real. 500 arrived. The stories are recorded. In 30 days, someone can pick up a deck at your Sept 26 table or from a post, pay on wearesaplings.com, and you can see what sent them. $999.";
 
 const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
