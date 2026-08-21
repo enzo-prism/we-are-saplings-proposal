@@ -1,14 +1,14 @@
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "Proposal for Clare Frattarola · We Are Saplings — $1,000 · 30-day sprint";
+  "Proposal for Clare Frattarola · We Are Saplings — $999 · 30 days";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 async function loadInter(weight: number) {
   const css = await fetch(
     `https://fonts.googleapis.com/css2?family=Inter:wght@${weight}&text=${encodeURIComponent(
-      "prism · proposal one month to get we are saplings ready to sell. $1,000 30-day sprint",
+      "prism · proposal your site can sell. then we stop. $999 30 days",
     )}`,
     { headers: { "User-Agent": "Mozilla/5.0" } },
   ).then((res) => res.text());
@@ -63,7 +63,7 @@ export default async function Image() {
             maxWidth: 1040,
           }}
         >
-          one month to get we are saplings ready to sell.
+          your site can sell. then we stop.
         </div>
         <div
           style={{
@@ -74,7 +74,7 @@ export default async function Image() {
             color: "#5F594F",
           }}
         >
-          $1,000 · 30-day sprint
+          $999 · 30 days
         </div>
       </div>
     ),
