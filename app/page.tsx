@@ -67,22 +67,22 @@ const whatYouGet: {
 const weeks = [
   {
     n: "01",
-    title: "1–7",
+    title: "days 1–7",
     body: "You add Enzo as Shopify admin. We reconnect Google so the site is findable again. Contact form live. Your copy starts going in.",
   },
   {
     n: "02",
-    title: "8–14",
+    title: "days 8–14",
     body: "Shop and checkout stay on your site. Get Yours Today actually sells.",
   },
   {
     n: "03",
-    title: "15–21",
+    title: "days 15–21",
     body: "Spotify on Audio Stories. New photos if the shoot is ready. Partner vs testimonials locked.",
   },
   {
     n: "04",
-    title: "22–30",
+    title: "days 22–30",
     body: "We confirm you can take money at the Sept 26 table from your phone. You get ready shop links for Instagram, TikTok, and the table, plus a one-page note on where to send people. Site is ready to push.",
   },
 ];
@@ -109,9 +109,18 @@ const startSteps = [
   "Day 30, you choose",
 ];
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
+function Eyebrow({
+  children,
+  tracking = "0.2em",
+}: {
+  children: React.ReactNode;
+  tracking?: string;
+}) {
   return (
-    <p className="w-full text-[11px] font-medium tracking-[0.2em] text-moss">
+    <p
+      className="w-full text-[11px] font-medium text-moss"
+      style={{ letterSpacing: tracking }}
+    >
       {children}
     </p>
   );
@@ -129,7 +138,7 @@ export default function Home() {
   return (
     <>
       <main className="mx-auto w-full max-w-[390px] pb-[104px] md:max-w-[768px] xl:max-w-[1280px]">
-        <header className="flex h-[53px] items-end justify-between px-6 pb-2 pt-7 md:px-[84px] xl:px-[300px]">
+        <header className="flex h-[53px] items-center justify-between px-6 pb-2 pt-7 md:px-[84px] xl:px-[300px]">
           <p className="text-[14px] font-semibold tracking-[0.4px] text-ink">
             prism
           </p>
@@ -139,7 +148,7 @@ export default function Home() {
         </header>
 
         <section className="flex flex-col gap-4 px-6 pb-2 pt-9 md:px-[84px] xl:px-[300px]">
-          <Eyebrow>30 days</Eyebrow>
+          <Eyebrow tracking="2.4px">30 days</Eyebrow>
           <h1 className="text-[32px] font-semibold leading-[38px] text-ink">
             your site can sell. then we stop.
           </h1>
@@ -156,7 +165,7 @@ export default function Home() {
 
         <section className="px-6 pb-2 pt-7 md:px-[84px] xl:px-[300px]">
           <div className="flex flex-col gap-1.5 rounded-2xl border border-line bg-card p-5">
-            <p className="text-[11px] font-medium tracking-[0.16em] text-moss">
+            <p className="text-[11px] font-medium tracking-[1.8px] text-moss">
               the whole proposal
             </p>
             <p className="text-[40px] font-semibold leading-[44px] text-ink">
@@ -189,24 +198,24 @@ export default function Home() {
 
         <section className="flex flex-col gap-3 px-6 pb-2 pt-10 md:px-[84px] xl:px-[300px]">
           <Eyebrow>what $999 gets you</Eyebrow>
-          <ul className="grid grid-cols-1 gap-3 md:grid-cols-2">
+          <ul className="grid grid-cols-1 items-start gap-3 md:grid-cols-2">
             {whatYouGet.map(({ title, body, Icon }) => (
               <li
                 key={title}
-                className="flex gap-3 rounded-2xl border border-line bg-card p-4"
+                className="flex gap-3 rounded-[14px] border border-line bg-card p-4"
               >
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-moss/35 bg-paper">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-line bg-paper">
                   <Icon
                     aria-hidden
                     className="size-5 text-moss"
                     strokeWidth={1.5}
                   />
                 </span>
-                <div className="min-w-0 flex-1">
+                <div className="flex min-w-0 flex-1 flex-col gap-1">
                   <p className="text-[15px] font-semibold leading-5 text-ink">
                     {title}
                   </p>
-                  <p className="mt-1 text-[13px] leading-[19px] text-muted">
+                  <p className="text-[13px] leading-[19px] text-muted">
                     {body}
                   </p>
                 </div>
@@ -217,17 +226,18 @@ export default function Home() {
 
         <section className="flex flex-col gap-4 px-6 pb-2 pt-10 md:px-[84px] xl:px-[300px]">
           <Eyebrow>the 30 days</Eyebrow>
+          <Heading>then we stop.</Heading>
           <ol className="flex flex-col gap-4">
             {weeks.map((step) => (
               <li key={step.n} className="flex gap-3.5">
                 <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-ink text-[11px] font-medium text-paper">
                   {step.n}
                 </span>
-                <div className="min-w-0 flex-1">
+                <div className="flex min-w-0 flex-1 flex-col gap-1">
                   <p className="text-[15px] font-semibold leading-5 text-ink">
                     {step.title}
                   </p>
-                  <p className="mt-1 text-[14px] leading-[21px] text-muted">
+                  <p className="text-[14px] leading-[21px] text-muted">
                     {step.body}
                   </p>
                 </div>
@@ -275,27 +285,27 @@ export default function Home() {
           <Eyebrow>after day 30</Eyebrow>
           <Heading>you pick one. none start unless you say so.</Heading>
           <div className="flex flex-col gap-3">
-            <article className="rounded-2xl border border-line bg-card p-5">
+            <article className="flex flex-col gap-2 rounded-2xl border border-line bg-card p-5">
               <h3 className="text-[18px] font-semibold leading-6 text-ink">
                 Growth
               </h3>
-              <p className="mt-2 text-[14px] leading-[21px] text-muted">
+              <p className="text-[14px] leading-[21px] text-muted">
                 Double down. Separate scope and price.
               </p>
             </article>
-            <article className="rounded-2xl border border-line bg-card p-5">
+            <article className="flex flex-col gap-2 rounded-2xl border border-line bg-card p-5">
               <h3 className="text-[18px] font-semibold leading-6 text-ink">
                 Keep the lights on
               </h3>
-              <p className="mt-2 text-[14px] leading-[21px] text-muted">
+              <p className="text-[14px] leading-[21px] text-muted">
                 $20/mo. Hosting plus the minimum to keep the site up.
               </p>
             </article>
-            <article className="rounded-2xl border border-line bg-card p-5">
+            <article className="flex flex-col gap-2 rounded-2xl border border-line bg-card p-5">
               <h3 className="text-[18px] font-semibold leading-6 text-ink">
                 Full handoff
               </h3>
-              <p className="mt-2 text-[14px] leading-[21px] text-muted">
+              <p className="text-[14px] leading-[21px] text-muted">
                 Enzo is out. You keep it, or another partner can take it
                 cleanly.
               </p>
@@ -343,7 +353,7 @@ export default function Home() {
           aria-hidden
           className="pointer-events-none absolute inset-x-0 bottom-full h-7 bg-gradient-to-b from-paper/0 to-paper"
         />
-        <div className="mx-auto w-full max-w-[390px] px-6 py-3 md:max-w-[768px] md:px-[84px] xl:max-w-[1280px] xl:px-[300px]">
+        <div className="mx-auto w-full max-w-[390px] px-6 pb-5 pt-3 md:max-w-[768px] md:px-[84px] xl:max-w-[1280px] xl:px-[300px]">
           <a
             className="flex h-[52px] min-h-11 w-full items-center justify-center rounded-[14px] bg-ink px-5 text-[16px] font-medium leading-5 text-paper"
             href={MAILTO}

@@ -51,7 +51,7 @@ export default async function Image() {
             color: "#938D40",
           }}
         >
-          prism · proposal
+          prism  ·  proposal
         </div>
         <div
           style={{
@@ -74,7 +74,7 @@ export default async function Image() {
             color: "#5F594F",
           }}
         >
-          $999 · 30 days
+          $999  ·  30 days
         </div>
       </div>
     ),
