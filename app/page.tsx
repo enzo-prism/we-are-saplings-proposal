@@ -190,7 +190,7 @@ export default function Home() {
                       <>
                         Shopify on{" "}
                         <a
-                          className="underline decoration-line underline-offset-2"
+                          className="-my-3 inline-flex min-h-11 items-center py-3 underline decoration-line underline-offset-2"
                           href="https://wearesaplings.com"
                         >
                           wearesaplings.com
@@ -334,6 +334,10 @@ export default function Home() {
       </main>
 
       <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-paper">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-full h-7 bg-gradient-to-b from-paper/0 to-paper"
+        />
         <div className="mx-auto w-full max-w-[390px] px-6 py-3 md:max-w-[768px] md:px-[84px] xl:max-w-[1280px] xl:px-[300px]">
           <a
             className="flex h-[52px] min-h-11 w-full items-center justify-center rounded-[14px] bg-ink px-5 text-[16px] font-medium leading-5 text-paper"
