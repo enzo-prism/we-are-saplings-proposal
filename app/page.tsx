@@ -97,7 +97,7 @@ const youHandle = [
 
 const notThisSprint = [
   "A new Shopify or Squarespace site",
-  "Paid ads this sprint",
+  "Paid ads this month",
   "Us posting for you",
   "A monthly that auto-starts",
 ];
@@ -265,7 +265,7 @@ export default function Home() {
         </section>
 
         <section className="flex flex-col gap-3 px-6 pb-2 pt-8 md:px-[84px] xl:px-[300px]">
-          <Eyebrow>not this sprint</Eyebrow>
+          <Eyebrow>not these 30 days</Eyebrow>
           <ul className="flex flex-col gap-3">
             {notThisSprint.map((item) => (
               <li
