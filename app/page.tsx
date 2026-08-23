@@ -1,364 +1,395 @@
+import Image from "next/image";
 import {
-  Activity,
-  AudioLines,
-  CalendarCheck,
-  Search,
+  ArrowRight,
+  BarChart3,
+  CalendarCheck2,
+  Check,
+  Headphones,
+  SearchCheck,
+  ShieldCheck,
   ShoppingBag,
   Smartphone,
-  type LucideIcon,
 } from "lucide-react";
 
-const MAILTO =
-  "mailto:enzo@design-prism.com?subject=We%20Are%20Saplings%2030-day%20sprint";
+const APPROVE_MAILTO =
+  "mailto:enzo@design-prism.com?subject=Approve%20We%20Are%20Saplings%2030-day%20sprint&body=Hi%20Enzo%2C%0A%0AI%27d%20like%20to%20move%20forward%20with%20the%20We%20Are%20Saplings%2030-day%20launch%20sprint%20for%20%24999.%20Let%27s%20confirm%20the%20start%20date%20and%20access.%0A%0AClare";
+const QUESTION_MAILTO =
+  "mailto:enzo@design-prism.com?subject=Question%20about%20the%20We%20Are%20Saplings%20proposal";
 
-function SiteLink() {
-  return (
-    <a
-      className="-my-3 inline-flex min-h-11 items-center py-3 underline decoration-line underline-offset-2"
-      href="https://wearesaplings.com"
-    >
-      wearesaplings.com
-    </a>
-  );
-}
-
-const whatYouGet: {
-  title: string;
-  body: React.ReactNode;
-  Icon: LucideIcon;
-}[] = [
+const goals = [
   {
-    title: "A parent checks out on your site.",
-    body: (
-      <>
-        They hit Get Yours Today and stay on <SiteLink />. Tax and shipping are
-        handled. You update stock. We connect it.
-      </>
-    ),
+    number: "01",
+    title: "Sell without being in every room",
+    body: "Let the product, stories, and site carry more of the experience so you can stay focused on the creative work.",
+  },
+  {
+    number: "02",
+    title: "Be ready for September 26",
+    body: "Give people at the event a simple way to discover the deck, pay, and keep exploring from their phone.",
+  },
+  {
+    number: "03",
+    title: "Build a base for the Q4 push",
+    body: "Send October and November content to a site that can convert interest into visits, stories, and sales.",
+  },
+];
+
+const outcomes = [
+  {
     Icon: ShoppingBag,
+    title: "Checkout that stays on your site",
+    body: "Connect the existing site to Shopify so Get Yours Today leads to a real product and checkout flow, with inventory, tax, and shipping settings in one place.",
   },
   {
-    title: "The Sept 26 table can take money.",
-    body: "From your phone, at the event, without a messy workaround.",
     Icon: Smartphone,
+    title: "A tested event payment setup",
+    body: "Set up and test the Shopify in-person payment path that fits your account and device before the Sept 26 event.",
   },
   {
-    title: "Stories live on the site.",
-    body: "Audio Stories goes to your Spotify podcast. A parent can play from the deck without the Linktree detour.",
-    Icon: AudioLines,
+    Icon: Headphones,
+    title: "Audio stories without the detour",
+    body: "Connect the Audio Stories experience to your Spotify podcast so families can move from the deck to the stories without relying on Linktree.",
   },
   {
-    title: "You can see which posts work.",
-    body: "When you post in October, we can see it: this post or this event sent someone, they stayed, they bought.",
-    Icon: Activity,
+    Icon: BarChart3,
+    title: "Clearer campaign attribution",
+    body: "Set up Google Analytics and campaign links so we can see which posts and events bring people in and which visits lead toward a purchase.",
   },
   {
-    title: "Google looks at a live site again.",
-    body: "A selling site, not a quiet one. The way it used to when people googled you before a pitch.",
-    Icon: Search,
+    Icon: SearchCheck,
+    title: "A stronger search foundation",
+    body: "Reconnect Search Console, confirm core indexing and page metadata, and restore a working contact path. Rankings are never guaranteed, but the foundation will be sound.",
   },
   {
-    title: "Two working Zooms in the 30 days.",
-    body: "Short. We look at what shipped.",
-    Icon: CalendarCheck,
+    Icon: CalendarCheck2,
+    title: "Two focused working sessions",
+    body: "We meet twice during the sprint to review what shipped, resolve decisions, and keep the launch moving.",
   },
 ];
 
 const weeks = [
   {
-    n: "01",
-    title: "days 1–7",
-    body: "You add Enzo as Shopify admin. We reconnect Google so the site is findable again. Contact form live. Your copy starts going in.",
+    number: "01",
+    label: "Days 1–7",
+    title: "Access + foundation",
+    body: "Confirm Shopify access, final content, Search Console, analytics, and the contact path. Lock the exact launch checklist.",
   },
   {
-    n: "02",
-    title: "days 8–14",
-    body: "Shop and checkout stay on your site. Get Yours Today actually sells.",
+    number: "02",
+    label: "Days 8–14",
+    title: "Shop + checkout",
+    body: "Connect the product and checkout flow, align inventory and fulfillment settings, and test the in-person payment path.",
   },
   {
-    n: "03",
-    title: "days 15–21",
-    body: "Spotify on Audio Stories. New photos if the shoot is ready. Partner vs testimonials locked.",
+    number: "03",
+    label: "Days 15–21",
+    title: "Story + experience",
+    body: "Implement your new page flow and copy, add available photos, connect Spotify, and settle the partner-versus-testimonials decision.",
   },
   {
-    n: "04",
-    title: "days 22–30",
-    body: "We confirm you can take money at the Sept 26 table from your phone. You get ready shop links for Instagram, TikTok, and the table, plus a one-page note on where to send people. Site is ready to push.",
+    number: "04",
+    label: "Days 22–30",
+    title: "Measure + launch",
+    body: "Create trackable links, test the experience on phone and desktop, verify the key journeys, and deliver a clear handoff note.",
   },
 ];
 
-const youHandle = [
-  "Shopify admin for Enzo in week 1",
-  "Final copy + Partner yes / no",
-  "Spotify upload + link",
-  "Photos when the shoot is done",
-  "IG / TikTok when you are ready",
+const included = [
+  "Updates to the existing We Are Saplings website",
+  "Shopify product, checkout, and event-payment connection",
+  "New copy, page flow, available photos, and Spotify link",
+  "Google Analytics, Search Console, and campaign-link setup",
+  "Mobile and desktop testing, two sessions, and handoff notes",
 ];
 
-const notThisSprint = [
-  "A new Shopify or Squarespace site",
-  "Paid ads this month",
-  "Us posting for you",
-  "A monthly that auto-starts",
+const fromClare = [
+  "Shopify admin access and final product details",
+  "Final copy and the partner-versus-testimonials decision",
+  "Spotify podcast link and new photos when ready",
+  "Access to the Google accounts connected to the site",
+  "Prompt feedback when a launch decision is needed",
 ];
 
-const startSteps = [
-  "Reply yes + Shopify admin",
-  "Send copy + Spotify link",
-  "Start 30 days and book the first bi-weekly Zoom",
-  "Day 30, you choose",
+const notIncluded = [
+  "A rebuild on Shopify or Squarespace",
+  "Paid advertising or ad spend",
+  "Ongoing social posting",
+  "New work after day 30 unless we agree to it separately",
 ];
 
-function Eyebrow({
-  children,
-  tracking = "0.2em",
+const nextPaths = [
+  {
+    title: "Keep growing",
+    body: "Build on the strongest content and sales signals. We define a separate scope and price together.",
+  },
+  {
+    title: "Hosting care · $20/month",
+    body: "Only if you choose it. Covers managed hosting and basic keep-the-site-running care. New content or design work is separate.",
+  },
+  {
+    title: "Full handoff",
+    body: "You keep full ownership. I hand over the files, accounts, and notes so you or another partner can take it forward cleanly.",
+  },
+];
+
+function SectionIntro({
+  eyebrow,
+  title,
+  body,
 }: {
-  children: React.ReactNode;
-  tracking?: string;
+  eyebrow: string;
+  title: string;
+  body?: string;
 }) {
   return (
-    <p
-      className="w-full text-[11px] font-medium text-moss"
-      style={{ letterSpacing: tracking }}
-    >
-      {children}
-    </p>
+    <div className="section-intro">
+      <p className="eyebrow">{eyebrow}</p>
+      <h2>{title}</h2>
+      {body ? <p>{body}</p> : null}
+    </div>
   );
 }
 
-function Heading({ children }: { children: React.ReactNode }) {
+function CheckList({ items }: { items: string[] }) {
   return (
-    <h2 className="w-full text-[24px] font-semibold leading-[30px] text-ink">
-      {children}
-    </h2>
+    <ul className="check-list">
+      {items.map((item) => (
+        <li key={item}>
+          <span aria-hidden="true">
+            <Check size={16} strokeWidth={2.2} />
+          </span>
+          {item}
+        </li>
+      ))}
+    </ul>
   );
 }
 
 export default function Home() {
   return (
     <>
-      <main className="mx-auto w-full max-w-[390px] pb-[104px] md:max-w-[768px] xl:max-w-[1280px]">
-        <header className="flex h-[53px] items-center justify-between px-6 pb-2 pt-7 md:px-[84px] xl:px-[300px]">
-          <p className="text-[14px] font-semibold tracking-[0.4px] text-ink">
+      <main>
+        <header className="site-header page-shell">
+          <a className="prism-mark" href="https://design-prism.com">
             prism
-          </p>
-          <p className="text-[11px] font-medium tracking-[0.2em] text-moss">
-            proposal
-          </p>
+          </a>
+          <div className="proposal-meta">
+            <span>Proposal for Clare Frattarola</span>
+            <span aria-hidden="true">·</span>
+            <span>August 23, 2026</span>
+          </div>
         </header>
 
-        <section className="flex flex-col gap-4 px-6 pb-2 pt-9 md:px-[84px] xl:px-[300px]">
-          <Eyebrow tracking="2.4px">30 days</Eyebrow>
-          <h1 className="text-[32px] font-semibold leading-[38px] text-ink">
-            your site can sell. then we stop.
-          </h1>
-          <p className="text-[16px] font-normal leading-6 text-muted">
-            The card deck is real. 500 arrived. The stories are recorded. You
-            are done creating and ready to push.
-          </p>
-          <p className="text-[16px] font-normal leading-6 text-muted">
-            In 30 days, someone can pick up a deck at your Sept 26 table or from
-            a post, pay on wearesaplings.com, and you can see what sent them.
-            $999. Then you choose what happens next.
-          </p>
+        <section className="hero page-shell">
+          <div className="hero-copy">
+            <p className="eyebrow">30-day website launch sprint</p>
+            <h1>Let&apos;s make We Are Saplings ready to sell.</h1>
+            <p className="hero-lede">
+              The deck is here. The stories are recorded. You&apos;ve shaped the
+              copy. This sprint connects the site, Shopify, audio, and analytics
+              before your Sept 26 event, so the Q4 push has a clear place to
+              land.
+            </p>
+            <div className="hero-actions">
+              <a className="button button-primary" href={APPROVE_MAILTO}>
+                Approve the sprint
+                <ArrowRight aria-hidden="true" size={18} />
+              </a>
+              <a className="button button-secondary" href={QUESTION_MAILTO}>
+                Ask a question
+              </a>
+            </div>
+            <p className="reassurance">
+              <ShieldCheck aria-hidden="true" size={17} />
+              One fixed project. No automatic renewal. You own the work.
+            </p>
+          </div>
+
+          <aside className="summary-card" aria-label="Proposal summary">
+            <div className="summary-art" aria-hidden="true">
+              <Image
+                src="/saplings-logo.png"
+                alt=""
+                width={390}
+                height={360}
+                priority
+              />
+            </div>
+            <div className="summary-price">
+              <p>Fixed project fee</p>
+              <strong>$999</strong>
+              <span>30 days · target launch before Sept 26</span>
+            </div>
+          </aside>
         </section>
 
-        <section className="px-6 pb-2 pt-7 md:px-[84px] xl:px-[300px]">
-          <div className="flex flex-col gap-1.5 rounded-2xl border border-line bg-card p-5">
-            <p className="text-[11px] font-medium tracking-[1.8px] text-moss">
-              the whole proposal
-            </p>
-            <p className="text-[40px] font-semibold leading-[44px] text-ink">
-              $999
-            </p>
-            <p className="text-[15px] font-normal leading-[22px] text-muted">
-              for the 30 days.
-            </p>
+        <section className="conversation-section page-shell section-space">
+          <SectionIntro
+            eyebrow="Built from our conversation"
+            title="The goal is not a new website. It is a working launch system."
+            body="Clare, you have already done the hard part: a year of real-world testing, 500 finished decks, recorded stories, and a clearer vision for what comes next. This sprint brings the pieces together."
+          />
+          <div className="goal-grid">
+            {goals.map((goal) => (
+              <article className="goal-card" key={goal.number}>
+                <span>{goal.number}</span>
+                <h3>{goal.title}</h3>
+                <p>{goal.body}</p>
+              </article>
+            ))}
           </div>
         </section>
 
-        <section className="flex flex-col gap-3 px-6 pb-2 pt-10 md:px-[84px] xl:px-[300px]">
-          <Eyebrow>where you are</Eyebrow>
-          <Heading>the deck is ready. the site is not.</Heading>
-          <p className="text-[16px] leading-6 text-muted">
-            You spent a year testing with real kids. Now you need the product to
-            sell without you sitting in every room.
-          </p>
-          <p className="text-[16px] leading-6 text-muted">
-            What is missing: Get Yours Today cannot take an order. A scan still
-            goes to Linktree. When people google you before a pitch, you no
-            longer look as legit as you used to.
-          </p>
-          <p className="text-[16px] leading-6 text-ink">
-            You already rewrote the copy and the page flow. You have a Shopify
-            account. You do not want a new site. You want this one finished so
-            you can stay on the cards, the book, and the stories.
-          </p>
+        <section className="outcomes-section section-space">
+          <div className="page-shell">
+            <SectionIntro
+              eyebrow="What is ready by day 30"
+              title="Six concrete outcomes"
+              body="The work is defined around things we can review, test, and hand over—not vague promises."
+            />
+            <div className="outcomes-grid">
+              {outcomes.map(({ Icon, title, body }) => (
+                <article className="outcome-card" key={title}>
+                  <span className="icon-wrap" aria-hidden="true">
+                    <Icon size={21} strokeWidth={1.8} />
+                  </span>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
         </section>
 
-        <section className="flex flex-col gap-3 px-6 pb-2 pt-10 md:px-[84px] xl:px-[300px]">
-          <Eyebrow>what $999 gets you</Eyebrow>
-          <ul className="grid grid-cols-1 items-start gap-3 md:grid-cols-2">
-            {whatYouGet.map(({ title, body, Icon }) => (
-              <li
-                key={title}
-                className="flex gap-3 rounded-[14px] border border-line bg-card p-4"
-              >
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-line bg-paper">
-                  <Icon
-                    aria-hidden
-                    className="size-5 text-moss"
-                    strokeWidth={1.5}
-                  />
-                </span>
-                <div className="flex min-w-0 flex-1 flex-col gap-1">
-                  <p className="text-[15px] font-semibold leading-5 text-ink">
-                    {title}
-                  </p>
-                  <p className="text-[13px] leading-[19px] text-muted">
-                    {body}
-                  </p>
+        <section className="timeline-section page-shell section-space">
+          <SectionIntro
+            eyebrow="The 30-day plan"
+            title="One clear sequence, from access to launch"
+          />
+          <ol className="timeline">
+            {weeks.map((week) => (
+              <li key={week.number}>
+                <div className="timeline-marker">
+                  <span>{week.number}</span>
                 </div>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="flex flex-col gap-4 px-6 pb-2 pt-10 md:px-[84px] xl:px-[300px]">
-          <Eyebrow>the 30 days</Eyebrow>
-          <Heading>then we stop.</Heading>
-          <ol className="flex flex-col gap-4">
-            {weeks.map((step) => (
-              <li key={step.n} className="flex gap-3.5">
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-ink text-[11px] font-medium text-paper">
-                  {step.n}
-                </span>
-                <div className="flex min-w-0 flex-1 flex-col gap-1">
-                  <p className="text-[15px] font-semibold leading-5 text-ink">
-                    {step.title}
-                  </p>
-                  <p className="text-[14px] leading-[21px] text-muted">
-                    {step.body}
-                  </p>
-                </div>
+                <p className="timeline-label">{week.label}</p>
+                <h3>{week.title}</h3>
+                <p>{week.body}</p>
               </li>
             ))}
           </ol>
         </section>
 
-        <section className="flex flex-col gap-3 px-6 pb-2 pt-10 md:px-[84px] xl:px-[300px]">
-          <Eyebrow>you handle</Eyebrow>
-          <Heading>what we need from you.</Heading>
-          <ul className="flex flex-col gap-3">
-            {youHandle.map((item) => (
-              <li
-                key={item}
-                className="flex gap-2 text-[15px] leading-6 text-ink"
-              >
-                <span aria-hidden className="text-moss">
-                  ·
-                </span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="flex flex-col gap-3 px-6 pb-2 pt-8 md:px-[84px] xl:px-[300px]">
-          <Eyebrow>not these 30 days</Eyebrow>
-          <ul className="flex flex-col gap-3">
-            {notThisSprint.map((item) => (
-              <li
-                key={item}
-                className="flex gap-2 text-[15px] leading-6 text-muted"
-              >
-                <span aria-hidden className="text-moss">
-                  ·
-                </span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="flex flex-col gap-3 px-6 pb-2 pt-10 md:px-[84px] xl:px-[300px]">
-          <Eyebrow>after day 30</Eyebrow>
-          <Heading>you pick one. none start unless you say so.</Heading>
-          <div className="flex flex-col gap-3">
-            <article className="flex flex-col gap-2 rounded-2xl border border-line bg-card p-5">
-              <h3 className="text-[18px] font-semibold leading-6 text-ink">
-                Growth
-              </h3>
-              <p className="text-[14px] leading-[21px] text-muted">
-                Double down. Separate scope and price.
-              </p>
-            </article>
-            <article className="flex flex-col gap-2 rounded-2xl border border-line bg-card p-5">
-              <h3 className="text-[18px] font-semibold leading-6 text-ink">
-                Keep the lights on
-              </h3>
-              <p className="text-[14px] leading-[21px] text-muted">
-                $20/mo. Hosting plus the minimum to keep the site up.
-              </p>
-            </article>
-            <article className="flex flex-col gap-2 rounded-2xl border border-line bg-card p-5">
-              <h3 className="text-[18px] font-semibold leading-6 text-ink">
-                Full handoff
-              </h3>
-              <p className="text-[14px] leading-[21px] text-muted">
-                Enzo is out. You keep it, or another partner can take it
-                cleanly.
-              </p>
-            </article>
+        <section className="scope-section section-space">
+          <div className="page-shell">
+            <SectionIntro
+              eyebrow="Clear scope, clear responsibilities"
+              title="No surprise work. No surprise monthly commitment."
+              body="The fastest way to protect the launch is to make the boundaries visible before we begin."
+            />
+            <div className="scope-grid">
+              <article className="scope-card scope-card-dark">
+                <p className="scope-label">Included in $999</p>
+                <h3>What I will deliver</h3>
+                <CheckList items={included} />
+              </article>
+              <article className="scope-card">
+                <p className="scope-label">From Clare</p>
+                <h3>What keeps the sprint moving</h3>
+                <CheckList items={fromClare} />
+              </article>
+            </div>
+            <div className="not-included">
+              <p>Not included in these 30 days</p>
+              <ul>
+                {notIncluded.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
-        <section className="flex flex-col gap-3 px-6 pb-2 pt-10 md:px-[84px] xl:px-[300px]">
-          <Eyebrow>how we start</Eyebrow>
-          <Heading>reply yes. we start this week.</Heading>
-          <ol className="flex flex-col gap-3">
-            {startSteps.map((item, i) => (
-              <li
-                key={item}
-                className="flex gap-3 text-[15px] leading-6 text-ink"
-              >
-                <span className="shrink-0 font-medium text-moss">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ol>
+        <section className="clarity-section page-shell section-space">
+          <div className="clarity-copy">
+            <p className="eyebrow">Investment + ownership</p>
+            <h2>$999. One time. Then you choose.</h2>
+            <p>
+              The $999 covers the 30-day sprint described above. Shopify plan,
+              transaction, shipping, and any other third-party platform fees
+              remain separate and are paid directly through your accounts.
+            </p>
+          </div>
+          <div className="clarity-points">
+            <div>
+              <strong>No automatic renewal</strong>
+              <span>Nothing begins on day 31 unless you approve it.</span>
+            </div>
+            <div>
+              <strong>Your accounts stay yours</strong>
+              <span>You retain the site, store, analytics, data, and access.</span>
+            </div>
+            <div>
+              <strong>Launch target: before Sept 26</strong>
+              <span>Assuming access and final source materials arrive on time.</span>
+            </div>
+          </div>
         </section>
 
-        <section className="flex flex-col gap-3 px-6 pb-6 pt-10 md:px-[84px] xl:px-[300px]">
-          <p className="text-[16px] leading-6 text-ink">
-            If this matches what you wanted from the call, reply and we start
-            this week.
-          </p>
-          <p className="text-[15px] font-semibold leading-[22px] text-ink">
-            Enzo Sison
-          </p>
-          <a
-            className="inline-flex min-h-11 items-center text-[14px] leading-5 text-muted underline decoration-line underline-offset-2"
-            href={MAILTO}
-          >
-            enzo@design-prism.com
-          </a>
+        <section className="next-section page-shell section-space">
+          <SectionIntro
+            eyebrow="After day 30"
+            title="Three options. None are automatic."
+            body="We review what launched and choose the next step together."
+          />
+          <div className="next-grid">
+            {nextPaths.map((path, index) => (
+              <article key={path.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{path.title}</h3>
+                <p>{path.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="final-cta page-shell section-space">
+          <div className="final-cta-art" aria-hidden="true">
+            <Image src="/bramble.png" alt="" width={284} height={284} />
+          </div>
+          <div className="final-cta-copy">
+            <p className="eyebrow">Ready when you are</p>
+            <h2>Let&apos;s give the deck a site that can carry it.</h2>
+            <p>
+              Approve the sprint by email, then we will confirm the start date,
+              access, and first working session.
+            </p>
+            <div className="hero-actions">
+              <a className="button button-primary" href={APPROVE_MAILTO}>
+                Approve the 30-day sprint
+                <ArrowRight aria-hidden="true" size={18} />
+              </a>
+              <a className="button button-secondary" href={QUESTION_MAILTO}>
+                Ask a question
+              </a>
+            </div>
+            <div className="signature">
+              <strong>Enzo Sison</strong>
+              <span>Prism · enzo@design-prism.com</span>
+            </div>
+          </div>
         </section>
       </main>
 
-      <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-paper">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-full h-7 bg-gradient-to-b from-paper/0 to-paper"
-        />
-        <div className="mx-auto w-full max-w-[390px] px-6 pb-5 pt-3 md:max-w-[768px] md:px-[84px] xl:max-w-[1280px] xl:px-[300px]">
-          <a
-            className="flex h-[52px] min-h-11 w-full items-center justify-center rounded-[14px] bg-ink px-5 text-[16px] font-medium leading-5 text-paper"
-            href={MAILTO}
-          >
-            reply to start
+      <div className="sticky-cta">
+        <div className="page-shell sticky-inner">
+          <div>
+            <strong>$999 fixed</strong>
+            <span>30 days · no auto-renewal</span>
+          </div>
+          <a className="button button-primary" href={APPROVE_MAILTO}>
+            Approve the sprint
+            <ArrowRight aria-hidden="true" size={18} />
           </a>
         </div>
       </div>

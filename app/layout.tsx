@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Newsreader } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,9 +9,16 @@ const inter = Inter({
   display: "swap",
 });
 
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  variable: "--font-newsreader",
+  display: "swap",
+});
+
 const title = "Proposal for Clare Frattarola · We Are Saplings";
 const description =
-  "The card deck is real. 500 arrived. The stories are recorded. In 30 days, someone can pick up a deck at your Sept 26 table or from a post, pay on wearesaplings.com, and you can see what sent them. $999.";
+  "A focused 30-day, $999 sprint to connect the We Are Saplings site, Shopify, audio stories, and analytics before the Sept 26 event.";
 
 const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
@@ -43,7 +50,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${newsreader.variable} h-full antialiased`}
+    >
       <body className={`${inter.className} min-h-full bg-paper text-ink`}>
         {children}
       </body>
