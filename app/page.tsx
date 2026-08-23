@@ -192,7 +192,7 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href={APPROVE_MAILTO}>
-                Approve the sprint
+                Approve by email
                 <ArrowRight aria-hidden="true" size={18} />
               </a>
               <a className="button button-secondary" href={QUESTION_MAILTO}>
@@ -201,7 +201,7 @@ export default function Home() {
             </div>
             <p className="reassurance">
               <ShieldCheck aria-hidden="true" size={17} />
-              One fixed project. No automatic renewal. You own the work.
+              Opens a prefilled email. No payment is taken here.
             </p>
           </div>
 
@@ -366,7 +366,7 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href={APPROVE_MAILTO}>
-                Approve the 30-day sprint
+                Approve by email
                 <ArrowRight aria-hidden="true" size={18} />
               </a>
               <a className="button button-secondary" href={QUESTION_MAILTO}>
@@ -375,7 +375,9 @@ export default function Home() {
             </div>
             <div className="signature">
               <strong>Enzo Sison</strong>
-              <span>Prism · enzo@design-prism.com</span>
+              <span>
+                Prism · <a href="mailto:enzo@design-prism.com">enzo@design-prism.com</a>
+              </span>
             </div>
           </div>
         </section>
@@ -388,7 +390,7 @@ export default function Home() {
             <span>30 days · no auto-renewal</span>
           </div>
           <a className="button button-primary" href={APPROVE_MAILTO}>
-            Approve the sprint
+            Approve by email
             <ArrowRight aria-hidden="true" size={18} />
           </a>
         </div>

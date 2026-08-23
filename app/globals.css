@@ -7,7 +7,7 @@
   --color-muted: #6b6056;
   --color-line: #d8cbbb;
   --color-moss: #59612d;
-  --color-orange: #b45127;
+  --color-orange: #aa4923;
   --font-sans: var(--font-inter);
 }
 
@@ -19,7 +19,7 @@
   --line: #d8cbbb;
   --moss: #59612d;
   --forest: #344331;
-  --orange: #b45127;
+  --orange: #aa4923;
   --orange-dark: #883b1e;
   --yellow: #e5c769;
 }
@@ -662,6 +662,17 @@ h1 {
   font-size: 14px;
 }
 
+.signature a {
+  text-decoration: underline;
+  text-decoration-color: rgba(45, 38, 31, 0.35);
+  text-underline-offset: 3px;
+}
+
+.signature a:focus-visible {
+  outline: 3px solid rgba(170, 73, 35, 0.32);
+  outline-offset: 3px;
+}
+
 .sticky-cta {
   position: fixed;
   z-index: 20;
@@ -748,7 +759,7 @@ h1 {
   }
 
   .section-space {
-    padding-block: 76px;
+    padding-block: 56px;
   }
 
   .site-header {
@@ -767,15 +778,20 @@ h1 {
 
   .hero {
     min-height: auto;
-    padding-block: 58px 76px;
+    padding-block: 42px 56px;
+    gap: 38px;
   }
 
   h1 {
-    font-size: clamp(48px, 14vw, 64px);
+    margin: 16px 0 20px;
+    font-size: clamp(42px, 12vw, 54px);
+    line-height: 1;
   }
 
   .hero-lede {
-    font-size: 17px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.58;
   }
 
   .hero-actions {
@@ -789,17 +805,42 @@ h1 {
 
   .reassurance {
     align-items: flex-start;
+    margin-top: 16px;
+    line-height: 1.45;
   }
 
   .summary-card {
-    min-height: 510px;
-    padding: 26px;
+    min-height: 360px;
+    padding: 22px;
     display: flex;
-    border-radius: 28px 28px 72px 28px;
+    border-radius: 26px 26px 60px 26px;
   }
 
   .summary-art img {
-    width: 250px;
+    width: 180px;
+  }
+
+  .summary-price {
+    padding: 20px;
+  }
+
+  .summary-price strong {
+    font-size: 52px;
+  }
+
+  .section-intro h2,
+  .clarity-copy h2,
+  .final-cta h2 {
+    margin: 12px 0 16px;
+    font-size: clamp(34px, 10vw, 44px);
+    line-height: 1.05;
+  }
+
+  .section-intro > p:last-child,
+  .clarity-copy > p:last-child,
+  .final-cta-copy > p {
+    font-size: 16px;
+    line-height: 1.62;
   }
 
   .goal-grid,
@@ -814,7 +855,18 @@ h1 {
 
   .goal-card {
     min-height: auto;
-    padding: 26px 4px 34px;
+    padding: 22px 2px 24px;
+  }
+
+  .goal-grid,
+  .outcomes-grid,
+  .scope-grid,
+  .next-grid {
+    margin-top: 36px;
+  }
+
+  .goal-card h3 {
+    margin-top: 18px;
   }
 
   .outcomes-grid {
@@ -823,12 +875,16 @@ h1 {
 
   .outcome-card {
     min-height: auto;
-    padding: 30px 0;
+    padding: 26px 0;
     border-right: 0;
   }
 
+  .outcome-card h3 {
+    margin-top: 20px;
+  }
+
   .timeline {
-    gap: 36px;
+    gap: 28px;
   }
 
   .timeline li {
@@ -856,40 +912,98 @@ h1 {
 
   .scope-card {
     min-height: auto;
-    padding: 28px 24px;
+    padding: 24px 20px;
+  }
+
+  .scope-card h3 {
+    font-size: 23px;
+  }
+
+  .check-list {
+    margin-top: 22px;
+    gap: 13px;
   }
 
   .not-included {
-    padding: 24px;
-    gap: 20px;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .clarity-section {
+    gap: 34px;
   }
 
   .clarity-points > div {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 6px;
+    padding: 18px 0;
+  }
+
+  .next-grid {
+    gap: 12px;
+  }
+
+  .next-grid article {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .next-grid h3 {
+    margin-top: 18px;
   }
 
   .final-cta {
-    margin-bottom: 116px;
-    padding: 54px 26px;
-    gap: 10px;
+    margin-bottom: 32px;
+    padding: 36px 22px 40px;
+    gap: 0;
+    border-radius: 28px;
   }
 
   .final-cta-art {
-    width: 160px;
-    margin: 0 auto;
-  }
-
-  .sticky-inner {
-    min-height: 78px;
-  }
-
-  .sticky-inner > div {
     display: none;
   }
 
-  .sticky-inner .button {
-    width: 100%;
+  .final-cta .hero-actions {
+    margin-top: 24px;
+  }
+
+  .signature {
+    margin-top: 24px;
+  }
+
+  .sticky-cta {
+    display: none;
+  }
+
+  .button:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .page-shell {
+    width: min(100% - 28px, 520px);
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .button {
+    padding-inline: 16px;
+    font-size: 14px;
+  }
+
+  .summary-card {
+    min-height: 320px;
+  }
+
+  .summary-art img {
+    width: 155px;
+  }
+
+  .summary-price {
+    padding: 16px;
   }
 }
 
